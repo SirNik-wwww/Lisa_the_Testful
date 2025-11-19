@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ic40w35j2bq4"]
+[gd_scene load_steps=23 format=3 uid="uid://ic40w35j2bq4"]
 
 [ext_resource type="Script" uid="uid://bysy4gk6v3a5g" path="res://bread_v3.gd" id="1_tci0j"]
 [ext_resource type="Texture2D" uid="uid://b627lsve1dqq4" path="res://Brad.png" id="2_6f0e8"]
@@ -11,8 +11,7 @@ size = Vector3(1.9782715, 4, 0.4)
 size = Vector3(1.845, 3.93, 0.385)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fcb2s"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_6f0e8"]
+size = Vector3(1, 1, 0.2)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t2kbv"]
 atlas = ExtResource("2_6f0e8")
@@ -197,12 +196,7 @@ mesh = SubResource("BoxMesh_fcb2s")
 [node name="ShapeCast3D" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_fcb2s")
-target_position = Vector3(0, 0, -1)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ShapeCast3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-visible = false
-mesh = SubResource("BoxMesh_6f0e8")
+target_position = Vector3(0, 0, -0.35)
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(9.14946, 0, 0, 0, 9.14946, 0, 0, 0, 1, 0, 2.285328, 0)
@@ -244,3 +238,9 @@ texture = ExtResource("3_tci0j")
 hframes = 3
 vframes = 4
 frame = 11
+
+[node name="MarkerRight" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="MarkerLeft" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
