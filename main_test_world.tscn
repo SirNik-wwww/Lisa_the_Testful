@@ -18,6 +18,7 @@ sky = SubResource("Sky_7q4ac")
 [node name="Main_test_world" type="Node3D"]
 
 [node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 mesh_library = ExtResource("1_yjoq6")
 cell_size = Vector3(2, 2, 0.6)
 data = {
@@ -27,6 +28,7 @@ metadata/_editor_floor_ = Vector3(0, 4, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="GridMap"]
 transform = Transform3D(4.8333483, 0, 0, 0, 4.8333483, 0, 0, 0, 1, -7, 5, -0.48852348)
+alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("2_yjoq6")
 
@@ -40,7 +42,7 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 2, 0)
 
 [node name="Bread" parent="." instance=ExtResource("2_w1lnn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.733592, -0.49150872)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -0.2)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.99947083, 0, 0.03252721, 0, 1, 0, -0.03252721, 0, 0.99947083, 0.06446457, 5.6929235, 9.892741)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ic40w35j2bq4"]
+[gd_scene load_steps=24 format=3 uid="uid://ic40w35j2bq4"]
 
 [ext_resource type="Script" uid="uid://bysy4gk6v3a5g" path="res://bread_v3.gd" id="1_tci0j"]
 [ext_resource type="Texture2D" uid="uid://b627lsve1dqq4" path="res://Brad.png" id="2_6f0e8"]
@@ -181,6 +181,9 @@ _data = {
 &"left": SubResource("Animation_nb6me")
 }
 
+[sub_resource type="BoxMesh" id="BoxMesh_tci0j"]
+size = Vector3(2, 2, 0.6)
+
 [node name="Bread" type="CharacterBody3D"]
 script = ExtResource("1_tci0j")
 
@@ -202,8 +205,9 @@ target_position = Vector3(0, 0, -0.35)
 transform = Transform3D(9.14946, 0, 0, 0, 9.14946, 0, 0, 0, 1, 0, 2.285328, 0)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_anv7l")
-animation = &"foward"
+animation = &"left"
 autoplay = "foward"
+frame_progress = 0.8613277
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationRootNode_te5xt")
@@ -239,8 +243,15 @@ hframes = 3
 vframes = 4
 frame = 11
 
-[node name="MarkerRight" type="Marker3D" parent="."]
+[node name="MarkHolder" type="Node3D" parent="."]
+
+[node name="MarkerRight" type="Marker3D" parent="MarkHolder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
-[node name="MarkerLeft" type="Marker3D" parent="."]
+[node name="MarkerLeft" type="Marker3D" parent="MarkHolder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("BoxMesh_tci0j")
