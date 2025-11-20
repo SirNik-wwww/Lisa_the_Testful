@@ -1,0 +1,248 @@
+[gd_scene load_steps=18 format=3 uid="uid://ic40w35j2bq4"]
+
+[ext_resource type="Script" uid="uid://bysy4gk6v3a5g" path="res://la_creatures/tot_samiy_igrok/bread_v3.gd" id="1_tci0j"]
+[ext_resource type="Texture2D" uid="uid://di1uyhe6rj5tu" path="res://la_creatures/tot_samiy_igrok/Konar_test_list.png" id="3_r0sxm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6f0e8"]
+size = Vector3(1.9, 3.6, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fcb2s"]
+size = Vector3(2, 4, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fcb2s"]
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3di1g"]
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3di1g"]
+size = Vector3(2, 1, 0.1)
+
+[sub_resource type="Animation" id="Animation_owdn4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_gcc01"]
+resource_name = "back"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_71rwg"]
+resource_name = "foward"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ou6c4"]
+resource_name = "jump_b"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+
+[sub_resource type="Animation" id="Animation_3di1g"]
+resource_name = "jump_f"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+
+[sub_resource type="Animation" id="Animation_w4w2l"]
+resource_name = "left"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.39621386),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 4]
+}
+
+[sub_resource type="Animation" id="Animation_tmivc"]
+resource_name = "left_s"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_r0sxm"]
+resource_name = "right"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.39547184),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 7, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_7f2fy"]
+resource_name = "right_s"
+length = 0.5
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_71rwg"]
+_data = {
+&"RESET": SubResource("Animation_owdn4"),
+&"back": SubResource("Animation_gcc01"),
+&"foward": SubResource("Animation_71rwg"),
+&"jump_b": SubResource("Animation_ou6c4"),
+&"jump_f": SubResource("Animation_3di1g"),
+&"left": SubResource("Animation_w4w2l"),
+&"left_s": SubResource("Animation_tmivc"),
+&"right": SubResource("Animation_r0sxm"),
+&"right_s": SubResource("Animation_7f2fy")
+}
+
+[node name="Bread" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_tci0j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005493164, 1.8000001, -1.4901161e-08)
+shape = SubResource("BoxShape3D_6f0e8")
+
+[node name="отладка" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+visible = false
+mesh = SubResource("BoxMesh_fcb2s")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(8.147838, -0.09879725, 0.0053151078, 0.10165473, 7.949472, -0.008782117, -0.043360993, 0.07190866, 0.9781607, 0, 2.5, 0)
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("3_r0sxm")
+hframes = 3
+vframes = 5
+
+[node name="ShapeHolder" type="Node3D" parent="."]
+
+[node name="ShapeHigh" type="ShapeCast3D" parent="ShapeHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_fcb2s")
+target_position = Vector3(0, 1, -0.4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ShapeHolder/ShapeHigh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.4)
+mesh = SubResource("BoxMesh_3di1g")
+
+[node name="ShapeLow" type="ShapeCast3D" parent="ShapeHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_fcb2s")
+target_position = Vector3(0, -1, -0.4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ShapeHolder/ShapeLow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.4)
+mesh = SubResource("BoxMesh_3di1g")
+
+[node name="ShapeFeet" type="ShapeCast3D" parent="ShapeHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_3di1g")
+target_position = Vector3(0, -2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ShapeHolder/ShapeFeet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.4)
+mesh = SubResource("BoxMesh_3di1g")
+
+[node name="ShapeLowFow" type="ShapeCast3D" parent="ShapeHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_fcb2s")
+target_position = Vector3(0, -2, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ShapeHolder/ShapeLowFow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 1)
+mesh = SubResource("BoxMesh_3di1g")
+
+[node name="ShapeLowBack" type="ShapeCast3D" parent="ShapeHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_fcb2s")
+target_position = Vector3(0, -2, -0.4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ShapeHolder/ShapeLowBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -0.4)
+mesh = SubResource("BoxMesh_3di1g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_71rwg")
+}
+autoplay = "foward"
+
+[node name="mark_holder" type="Node3D" parent="."]
+
+[node name="MarkJump1" type="Marker3D" parent="mark_holder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4, -0.1)
+
+[node name="MarkJump2" type="Marker3D" parent="mark_holder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -0.6)
+
+[node name="MarkFall1" type="Marker3D" parent="mark_holder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4000001, 0.1)
+
+[node name="MarkFall2" type="Marker3D" parent="mark_holder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.6)

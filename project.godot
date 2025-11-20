@@ -13,7 +13,7 @@ config_version=5
 config/name="Lisa the Testful"
 run/main_scene="uid://dbar4div4lv6m"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://png/test_one_png/icon.svg"
 
 [rendering]
 
