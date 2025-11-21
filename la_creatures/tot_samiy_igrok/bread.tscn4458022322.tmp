@@ -1,7 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://ic40w35j2bq4"]
+[gd_scene load_steps=19 format=3 uid="uid://ic40w35j2bq4"]
 
 [ext_resource type="Script" uid="uid://bysy4gk6v3a5g" path="res://la_creatures/tot_samiy_igrok/bread_v3.gd" id="1_tci0j"]
-[ext_resource type="Texture2D" uid="uid://dgckair60gruh" path="res://la_creatures/tot_samiy_igrok/Bread_test_list 1.png" id="2_3di1g"]
+[ext_resource type="Texture2D" uid="uid://di1uyhe6rj5tu" path="res://la_creatures/tot_samiy_igrok/Konar_test_list.png" id="3_r0sxm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6f0e8"]
 size = Vector3(1.9, 3.6, 0.4)
@@ -70,35 +70,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
-}
-
-[sub_resource type="Animation" id="Animation_4eklr"]
-resource_name = "down"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath("Sprite3D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.008977809, 0.0054337406, 0.012475963)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite3D:quaternion")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.19686815, 0.26603806, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Quaternion(0.0045057335, 0.0026887853, 0.006225659, 0.99996686), Quaternion(-0.003647132, 0.0037722164, 0.97209394, -0.23453328), Quaternion(-0.00025763264, 0.0052406886, 0.8857428, 0.46414673), Quaternion(0.0045057335, 0.0026887853, 0.006225659, 0.99996686)]
 }
 
 [sub_resource type="Animation" id="Animation_71rwg"]
@@ -198,21 +169,9 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_7f2fy"]
 resource_name = "right_s"
 length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [7]
-}
 
 [sub_resource type="Animation" id="Animation_b77mm"]
-resource_name = "up"
+resource_name = "rope"
 length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
@@ -244,7 +203,6 @@ tracks/1/keys = {
 _data = {
 &"RESET": SubResource("Animation_owdn4"),
 &"back": SubResource("Animation_gcc01"),
-&"down": SubResource("Animation_4eklr"),
 &"foward": SubResource("Animation_71rwg"),
 &"jump_b": SubResource("Animation_ou6c4"),
 &"jump_f": SubResource("Animation_3di1g"),
@@ -252,7 +210,7 @@ _data = {
 &"left_s": SubResource("Animation_tmivc"),
 &"right": SubResource("Animation_r0sxm"),
 &"right_s": SubResource("Animation_7f2fy"),
-&"up": SubResource("Animation_b77mm")
+&"rope": SubResource("Animation_b77mm")
 }
 
 [node name="Bread" type="CharacterBody3D"]
@@ -274,7 +232,7 @@ transform = Transform3D(9.134643, 0, 0, 0, 8.93649, 0, 0, 0, 1.9781873, 0, 2.9, 
 rotation_edit_mode = 1
 alpha_cut = 1
 texture_filter = 0
-texture = ExtResource("2_3di1g")
+texture = ExtResource("3_r0sxm")
 hframes = 3
 vframes = 5
 
@@ -297,7 +255,6 @@ target_position = Vector3(0, -1, -0.4)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ShapeHolder/ShapeLow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.4)
-visible = false
 mesh = SubResource("BoxMesh_3di1g")
 
 [node name="ShapeFeet" type="ShapeCast3D" parent="ShapeHolder"]
@@ -307,7 +264,6 @@ target_position = Vector3(0, -2, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ShapeHolder/ShapeFeet"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.4)
-visible = false
 mesh = SubResource("BoxMesh_3di1g")
 
 [node name="ShapeLowFow" type="ShapeCast3D" parent="ShapeHolder"]
@@ -317,7 +273,6 @@ target_position = Vector3(0, -2, 0.6)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ShapeHolder/ShapeLowFow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0.6)
-visible = false
 mesh = SubResource("BoxMesh_3di1g")
 
 [node name="ShapeLowBack" type="ShapeCast3D" parent="ShapeHolder"]
@@ -327,7 +282,6 @@ target_position = Vector3(0, -2, -0.5)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ShapeHolder/ShapeLowBack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -0.5)
-visible = false
 mesh = SubResource("BoxMesh_3di1g")
 
 [node name="ShapeRope" type="ShapeCast3D" parent="ShapeHolder"]
@@ -338,27 +292,6 @@ collide_with_areas = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ShapeHolder/ShapeRope"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.099999994)
-visible = false
-mesh = SubResource("BoxMesh_3di1g")
-
-[node name="ShapeHigh2" type="ShapeCast3D" parent="ShapeHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.90000004)
-shape = SubResource("BoxShape3D_fcb2s")
-target_position = Vector3(0, 1, -0.4)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ShapeHolder/ShapeHigh2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.4)
-visible = false
-mesh = SubResource("BoxMesh_3di1g")
-
-[node name="ShapeLow2" type="ShapeCast3D" parent="ShapeHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.90000004)
-shape = SubResource("BoxShape3D_fcb2s")
-target_position = Vector3(0, -1, -0.4)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ShapeHolder/ShapeLow2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.4)
-visible = false
 mesh = SubResource("BoxMesh_3di1g")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

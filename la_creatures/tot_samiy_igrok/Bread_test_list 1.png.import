@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di1uyhe6rj5tu"
-path="res://.godot/imported/Konar_test_list.png-a38e0e478563781fdcc1a3bcf541b2f2.ctex"
+uid="uid://dgckair60gruh"
+path="res://.godot/imported/Bread_test_list 1.png-9fd2bc22656cd230f00ada9e13d30992.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://la_creatures/tot_samiy_igrok/Konar_test_list.png"
-dest_files=["res://.godot/imported/Konar_test_list.png-a38e0e478563781fdcc1a3bcf541b2f2.ctex"]
+source_file="res://la_creatures/tot_samiy_igrok/Bread_test_list 1.png"
+dest_files=["res://.godot/imported/Bread_test_list 1.png-9fd2bc22656cd230f00ada9e13d30992.ctex"]
 
 [params]
 

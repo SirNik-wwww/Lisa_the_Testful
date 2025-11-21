@@ -7,6 +7,9 @@ extends CharacterBody3D
 @onready var shape_feet: ShapeCast3D = $ShapeHolder/ShapeFeet
 @onready var shape_low_fow: ShapeCast3D = $ShapeHolder/ShapeLowFow
 @onready var shape_low_back: ShapeCast3D = $ShapeHolder/ShapeLowBack
+@onready var shape_rope: ShapeCast3D = $ShapeHolder/ShapeRope
+@onready var shape_high_2: ShapeCast3D = $ShapeHolder/ShapeHigh2
+@onready var shape_low_2: ShapeCast3D = $ShapeHolder/ShapeLow2
 
 @onready var mark_j_1: Marker3D = $mark_holder/MarkJump1
 @onready var mark_j_2: Marker3D = $mark_holder/MarkJump2
@@ -21,6 +24,7 @@ const tile_wide := 0.6
 const JUMP_VELOCITY = 12.5
 
 var is_jump := false
+var is_rope := false
 var dir_is_foward : bool = true
 var fall_start_pos : Vector3
 
@@ -31,13 +35,13 @@ var time_to_move_l_o_r := 0.2
 var time_to_move_f_o_b := 0.2
 
 # Механизм положений _______
-enum Sts {IDLE, WALK_L, WALK_R, WALK_F, WALK_B, JUMP, FALL, JUMP_F}
+enum Sts {IDLE, WALK_L, WALK_R, WALK_F, WALK_B, JUMP, FALL, JUMP_F, ROPE}
 var st := Sts.IDLE
 #___________________________
 
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor() :
+	if not is_on_floor() and is_rope == false:
 		velocity += get_gravity() * delta * 12
 
 	match st:
@@ -57,6 +61,8 @@ func _physics_process(delta: float) -> void:
 			fall()
 		Sts.JUMP_F:
 			jump_f()
+		Sts.ROPE:
+			rope()
 
 	move_and_slide()
 
@@ -82,8 +88,14 @@ func move(direction : String):
 			get_tree().create_tween().tween_property(self, "position", self.position + Vector3(0, 0, tile_wide), time_to_move_l_o_r)
 		if direction == "back":
 			get_tree().create_tween().tween_property(self, "position", self.position - Vector3(0, 0, tile_wide), time_to_move_l_o_r)
+		if direction == "up":
+			get_tree().create_tween().tween_property(self, "position", self.position + Vector3(0, 2.0, 0), time_to_move_l_o_r)
+		if direction == "down":
+			get_tree().create_tween().tween_property(self, "position", self.position - Vector3(0, 2.0, 0), time_to_move_l_o_r)
+			
 
 		anim_pl.play(direction)
+
 		await get_tree().create_timer(time_to_move_l_o_r).timeout
 
 		may_move = !may_move
@@ -103,11 +115,13 @@ func idle():
 		chan_st(Sts.WALK_R)
 	if Input.is_action_pressed("ui_up") and !Input.is_action_pressed("ui_down"):
 		dir_idle = "back"
-		if shape_low_back.is_colliding() :
+		if shape_low_back.is_colliding() and shape_high.is_colliding() == false and !shape_low.is_colliding():
 			chan_st(Sts.WALK_B)
 		if Input.is_action_just_pressed("ui_accept"):
-			if shape_low.is_colliding() == true and shape_high.is_colliding() == false:
+			if shape_low.is_colliding() == true and shape_high.is_colliding() == false and !shape_rope.is_colliding():
 				chan_st(Sts.JUMP)
+			if shape_rope.is_colliding():
+				chan_st(Sts.ROPE)
 	if !Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_down"):
 		dir_idle = "foward"
 		if shape_low_fow.is_colliding():
@@ -141,7 +155,7 @@ func walk_r():
 	if Input.is_action_pressed("ui_right"):
 		move("right")
 		if Input.is_action_pressed("ui_left"):
-			dir_idle = "foward"
+			dir_idle = "right_s"
 			chan_st(Sts.IDLE)
 	elif Input.is_action_pressed("ui_left") and !Input.is_action_pressed("ui_right"):
 		chan_st(Sts.WALK_L)
@@ -154,7 +168,7 @@ func walk_f():
 	print("fffffff")
 	if shape_feet.is_colliding() == false:
 		chan_st(Sts.FALL)
-	if Input.is_action_pressed("ui_down") and shape_low_fow.is_colliding():
+	if Input.is_action_pressed("ui_down") and shape_low_fow.is_colliding() and !shape_low_2.is_colliding() and !shape_high_2.is_colliding():
 		move("foward")
 		if Input.is_action_pressed("ui_up") or !shape_low_fow.is_colliding():
 			dir_idle = "foward"
@@ -227,3 +241,21 @@ func jump_f():
 		dir_idle = "foward"
 		is_jump = !is_jump
 		chan_st(Sts.FALL)
+
+
+func rope():
+	is_rope = true
+	print("Hope")
+	if Input.is_action_pressed("ui_up"):
+		move("up")
+		if Input.is_action_pressed("ui_down"):
+			anim_pl.stop()
+	if Input.is_action_pressed("ui_down"):
+		move("down")
+		if Input.is_action_pressed("ui_up"):
+			anim_pl.stop()
+	if Input.is_action_just_released("ui_down") or Input.is_action_just_released("ui_up"):
+		anim_pl.stop()
+
+	#if shape_rope.is_colliding():
+		#chan_st(Sts.IDLE)

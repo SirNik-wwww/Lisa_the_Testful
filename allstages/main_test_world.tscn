@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dbar4div4lv6m"]
+[gd_scene load_steps=16 format=3 uid="uid://dbar4div4lv6m"]
 
 [ext_resource type="MeshLibrary" uid="uid://cq5fr2lafj05s" path="res://gridd/test_one_grids/thin_v2.tres" id="1_frnh5"]
 [ext_resource type="Texture2D" uid="uid://br5w43oylyjh2" path="res://png/test_one_png/342342redwfc3.png" id="2_tvi7v"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bv2fd543n66b8" path="res://allstages/test_sta/camera_BIGBROTHER.gd" id="4_tvi7v"]
 [ext_resource type="Script" uid="uid://cs4xm47lsspab" path="res://allstages/test_dialogue_0.gd" id="6_nensc"]
 [ext_resource type="PackedScene" uid="uid://bgbsir7i4anft" path="res://something/dialogue_baloon.tscn" id="7_3n1w5"]
+[ext_resource type="PackedScene" uid="uid://dhagspwb7or6l" path="res://cool_things/rope.tscn" id="8_oi1ql"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yjoq6"]
 panorama = ExtResource("4_3n1w5")
@@ -27,6 +28,9 @@ size = Vector3(4, 4, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_oi1ql"]
 viewport_path = NodePath("Area3D/SubViewport")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3n1w5"]
+size = Vector3(1, 1, 0.2)
+
 [node name="Main_test_world" type="Node3D"]
 
 [node name="GridMap" type="GridMap" parent="."]
@@ -34,9 +38,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 mesh_library = ExtResource("1_frnh5")
 cell_size = Vector3(2, 2, 0.6)
 data = {
-"cells": PackedInt32Array(0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 65532, 65535, 0, 65533, 65535, 0, 3, 65535, 0, 4, 65535, 0, 6, 65535, 0, 5, 65535, 0, 7, 65535, 0, 65530, 65535, 0, 65531, 65535, 0, 131069, 65534, 0, 131070, 65534, 0, 131071, 65534, 0, 196605, 65533, 0, 196606, 65533, 0, 196607, 65533, 0, 196605, 65532, 0, 196606, 65531, 0, 196606, 65532, 0, 196607, 65532, 0, 131072, 65532, 0, 131072, 65533, 0, 131073, 65533, 0, 131073, 65532, 0, 131074, 65532, 0, 131074, 65533, 0, 131075, 65532, 0, 131075, 65533, 0, 131076, 65533, 0, 131076, 65532, 0, 131077, 65532, 0, 131077, 65533, 0, 131078, 65533, 0, 131078, 65532, 0, 65536, 65533, 3, 65537, 65533, 3, 65538, 65533, 3, 65538, 65532, 3, 65539, 65532, 3, 65540, 65532, 3, 65541, 65532, 3, 65542, 65532, 3, 65539, 65533, 3, 65540, 65533, 3, 65541, 65533, 3, 65542, 65533, 3, 262141, 65531, 3, 262142, 65531, 3, 262143, 65531, 3, 196608, 65531, 3, 196609, 65531, 3, 196610, 65531, 3, 196611, 65531, 3, 196612, 65531, 3, 196613, 65531, 3, 196614, 65531, 3, 327677, 65531, 3, 327678, 65531, 3, 327679, 65531, 3, 262144, 65531, 3, 262145, 65531, 3, 262146, 65531, 3, 262147, 65531, 3, 262148, 65531, 3, 262149, 65531, 3, 262150, 65531, 3, 0, 65533, 3, 1, 65533, 3, 1, 65532, 3, 2, 65532, 3, 2, 65533, 3, 3, 65533, 3, 4, 65533, 3, 4, 65532, 3, 5, 65532, 3, 5, 65533, 3, 6, 65532, 3, 6, 65533, 3, 65535, 65534, 3, 65535, 65535, 0, 65534, 65535, 0, 262141, 65532, 3, 262142, 65532, 3, 262143, 65532, 3, 196608, 65532, 3, 196609, 65532, 3, 196610, 65532, 3, 196611, 65532, 3, 196614, 65532, 3, 196613, 65532, 3, 196612, 65532, 3, 327677, 65532, 3, 327678, 65532, 3, 327679, 65532, 3, 262145, 65532, 3, 262144, 65532, 3, 262146, 65532, 3, 262148, 65532, 3, 262147, 65532, 3, 262149, 65532, 3, 262150, 65532, 3, -6, 65535, 3, -5, 65535, 3, -4, 65535, 3, -3, 65535, 3, -2, 65535, 3, -1, 65535, 3, -65536, 65535, 3, -65535, 65535, 3, -65534, 65535, 3, -65533, 65535, 3, -65532, 65535, 3, -65531, 65535, 3, -65530, 65535, 3, -65529, 65535, 3, 131079, 65533, 0, 196615, 65532, 0, 262151, 65531, 0, 327687, 65530, 0, 131080, 65533, 0, 131081, 65533, 0, 196617, 65532, 0, 7, 65534, 0, 8, 65534, 0, 9, 65534, 0, 9, 65535, 0, 8, 65535, 0, 9, 65533, 0, 8, 65533, 0, 7, 65533, 0, 7, 65532, 0, 7, 65531, 0, 8, 65531, 0, 8, 65532, 0, 9, 65532, 0, 9, 65531, 0, 9, 65530, 0, 8, 65530, 0, 8, 65529, 0, 7, 65529, 0, 7, 65530, 0, 9, 65529, 0, 9, 65528, 0, 8, 65528, 0, 7, 65528, 0, 10, 65535, 0, 10, 65534, 0, 10, 65533, 0, 10, 65532, 0, 10, 65531, 0, 10, 65530, 0, 10, 65529, 0, 10, 65528, 0)
+"cells": PackedInt32Array(0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 65532, 65535, 0, 65533, 65535, 0, 3, 65535, 0, 4, 65535, 0, 6, 65535, 0, 5, 65535, 0, 7, 65535, 0, 65530, 65535, 0, 65531, 65535, 0, 131069, 65534, 0, 131070, 65534, 0, 131071, 65534, 0, 196605, 65533, 0, 196606, 65533, 0, 196607, 65533, 0, 196605, 65532, 0, 196606, 65531, 0, 196606, 65532, 0, 196607, 65532, 0, 131072, 65532, 0, 131072, 65533, 0, 131073, 65533, 0, 131073, 65532, 0, 131074, 65532, 0, 131074, 65533, 0, 131075, 65532, 0, 131075, 65533, 0, 131076, 65533, 0, 131076, 65532, 0, 131077, 65532, 0, 131077, 65533, 0, 131078, 65533, 0, 131078, 65532, 0, 65536, 65533, 3, 65537, 65533, 3, 65538, 65533, 3, 65538, 65532, 3, 65539, 65532, 3, 65540, 65532, 3, 65541, 65532, 3, 65542, 65532, 3, 65539, 65533, 3, 65540, 65533, 3, 65541, 65533, 3, 65542, 65533, 3, 262141, 65531, 3, 262142, 65531, 3, 262143, 65531, 3, 196608, 65531, 3, 196609, 65531, 3, 196610, 65531, 3, 196611, 65531, 3, 196612, 65531, 3, 196613, 65531, 3, 196614, 65531, 3, 327677, 65531, 3, 327678, 65531, 3, 327679, 65531, 3, 262144, 65531, 3, 262145, 65531, 3, 262146, 65531, 3, 262147, 65531, 3, 262148, 65531, 3, 262149, 65531, 3, 262150, 65531, 3, 0, 65533, 3, 1, 65533, 3, 1, 65532, 3, 2, 65532, 3, 2, 65533, 3, 3, 65533, 3, 4, 65533, 3, 4, 65532, 3, 5, 65532, 3, 5, 65533, 3, 6, 65532, 3, 6, 65533, 3, 65535, 65534, 3, 65535, 65535, 0, 65534, 65535, 0, 262141, 65532, 3, 262142, 65532, 3, 262143, 65532, 3, 196608, 65532, 3, 196609, 65532, 3, 196610, 65532, 3, 196611, 65532, 3, 196614, 65532, 3, 196613, 65532, 3, 196612, 65532, 3, 327677, 65532, 3, 327678, 65532, 3, 327679, 65532, 3, 262145, 65532, 3, 262144, 65532, 3, 262146, 65532, 3, 262148, 65532, 3, 262147, 65532, 3, 262149, 65532, 3, 262150, 65532, 3, -6, 65535, 3, -5, 65535, 3, -4, 65535, 3, -3, 65535, 3, -2, 65535, 3, -1, 65535, 3, -65536, 65535, 3, -65535, 65535, 3, -65534, 65535, 3, -65533, 65535, 3, -65532, 65535, 3, -65531, 65535, 3, -65530, 65535, 3, -65529, 65535, 3, 131079, 65533, 0, 196615, 65532, 0, 262151, 65531, 0, 327687, 65530, 0, 131080, 65533, 0, 131081, 65533, 0, 196617, 65532, 0, 7, 65534, 0, 8, 65534, 0, 9, 65534, 0, 9, 65535, 0, 8, 65535, 0, 9, 65533, 0, 8, 65533, 0, 7, 65533, 0, 7, 65532, 0, 7, 65531, 0, 8, 65531, 0, 8, 65532, 0, 9, 65532, 0, 9, 65531, 0, 9, 65530, 0, 8, 65530, 0, 8, 65529, 0, 7, 65529, 0, 7, 65530, 0, 9, 65529, 0, 9, 65528, 0, 8, 65528, 0, 7, 65528, 0, 10, 65535, 0, 10, 65534, 0, 10, 65533, 0, 10, 65532, 0, 10, 65531, 0, 10, 65530, 0, 10, 65529, 0, 10, 65528, 0, 11, 65535, 0, 12, 65535, 0, 13, 65535, 0, 14, 65535, 0, 12, 65534, 0, 11, 65534, 0, 65549, 65534, 3, 131085, 65534, 3, 196621, 65534, 3, 262157, 65534, 3, 327693, 65534, 3, 393229, 65534, 0, 393230, 65534, 0, 393231, 65534, 0)
 }
-metadata/_editor_floor_ = Vector3(0, 0, 0)
+metadata/_editor_floor_ = Vector3(0, 6, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="GridMap"]
 transform = Transform3D(4.8333483, 0, 0, 0, 4.8333483, 0, 0, 0, 1, -7, 5, -0.48852348)
@@ -49,10 +53,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -0.3)
 
 [node name="Camera3D" type="Camera3D" parent="Bread"]
 transform = Transform3D(0.9999625, 0.0022405256, -0.008361754, 0, 0.9659259, 0.25881907, 0.008656725, -0.25880936, 0.9658896, 0, 7, 16.3)
-current = true
 
 [node name="Camera_BB" type="Camera3D" parent="."]
 transform = Transform3D(0.99947083, 0, 0.03252721, 0, 1, 0, -0.03252721, 0, 0.99947083, 0.06446457, 5.6929235, 9.892741)
+current = true
 script = ExtResource("4_tvi7v")
 
 [node name="Camera3Dtest" type="Camera3D" parent="."]
@@ -84,3 +88,82 @@ size = Vector2i(352, 112)
 [node name="Sprite3D" type="Sprite3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0015736, 2.761198, -1)
 texture = SubResource("ViewportTexture_oi1ql")
+
+[node name="rope1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 3, -0.59999996)
+
+[node name="down" type="Area3D" parent="rope1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rope1/down"]
+shape = SubResource("BoxShape3D_3n1w5")
+
+[node name="above" type="Area3D" parent="rope1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rope1/above"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_3n1w5")
+
+[node name="holder" type="Node3D" parent="rope1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5340023, 0.11406803)
+
+[node name="hope" parent="rope1/holder" instance=ExtResource("8_oi1ql")]
+
+[node name="hope2" parent="rope1/holder" instance=ExtResource("8_oi1ql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="hope3" parent="rope1/holder" instance=ExtResource("8_oi1ql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="hope4" parent="rope1/holder" instance=ExtResource("8_oi1ql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="hope5" parent="rope1/holder" instance=ExtResource("8_oi1ql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="hope6" parent="rope1/holder" instance=ExtResource("8_oi1ql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+
+[node name="hope7" parent="rope1/holder" instance=ExtResource("8_oi1ql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+
+[node name="hope8" parent="rope1/holder" instance=ExtResource("8_oi1ql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+
+[node name="hope9" parent="rope1/holder" instance=ExtResource("8_oi1ql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="hope10" parent="rope1/holder" instance=ExtResource("8_oi1ql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+
+[node name="hope11" parent="rope1/holder" instance=ExtResource("8_oi1ql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+
+[node name="hope12" parent="rope1/holder" instance=ExtResource("8_oi1ql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0)
+
+[node name="Label3D3" type="Label3D" parent="rope1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2064342, 3.453401, 6.5629826)
+alpha_cut = 1
+text = "<- Rope
+(doesnt work)
+(\"R\" to climb off)"
+font_size = 100
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7657409, 3.453401, -1.0370175)
+alpha_cut = 1
+text = "Move: arrow keys
+Jump: space"
+font_size = 100
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.765741, 3.453401, -1.0370175)
+alpha_cut = 1
+text = "Q Exit: \">\"
+Q Restart: R
+Change Cam: Q"
+font_size = 100
