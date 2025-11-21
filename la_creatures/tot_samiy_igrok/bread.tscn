@@ -189,6 +189,7 @@ target_position = Vector3(0, 1, -0.4)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ShapeHolder/ShapeHigh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.4)
+visible = false
 mesh = SubResource("BoxMesh_3di1g")
 
 [node name="ShapeLow" type="ShapeCast3D" parent="ShapeHolder"]
@@ -198,6 +199,7 @@ target_position = Vector3(0, -1, -0.4)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ShapeHolder/ShapeLow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.4)
+visible = false
 mesh = SubResource("BoxMesh_3di1g")
 
 [node name="ShapeFeet" type="ShapeCast3D" parent="ShapeHolder"]
@@ -207,24 +209,25 @@ target_position = Vector3(0, -2, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ShapeHolder/ShapeFeet"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.4)
+visible = false
 mesh = SubResource("BoxMesh_3di1g")
 
 [node name="ShapeLowFow" type="ShapeCast3D" parent="ShapeHolder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_fcb2s")
-target_position = Vector3(0, -2, 1)
+target_position = Vector3(0, -2, 0.6)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ShapeHolder/ShapeLowFow"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0.6)
 mesh = SubResource("BoxMesh_3di1g")
 
 [node name="ShapeLowBack" type="ShapeCast3D" parent="ShapeHolder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_fcb2s")
-target_position = Vector3(0, -2, -0.4)
+target_position = Vector3(0, -2, -0.5)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ShapeHolder/ShapeLowBack"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -0.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -0.5)
 mesh = SubResource("BoxMesh_3di1g")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

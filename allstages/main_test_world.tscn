@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dbar4div4lv6m"]
+[gd_scene load_steps=14 format=3 uid="uid://dbar4div4lv6m"]
 
 [ext_resource type="MeshLibrary" uid="uid://cq5fr2lafj05s" path="res://gridd/test_one_grids/thin_v2.tres" id="1_frnh5"]
 [ext_resource type="Texture2D" uid="uid://br5w43oylyjh2" path="res://png/test_one_png/342342redwfc3.png" id="2_tvi7v"]
 [ext_resource type="PackedScene" uid="uid://ic40w35j2bq4" path="res://la_creatures/tot_samiy_igrok/bread.tscn" id="3_nensc"]
 [ext_resource type="Texture2D" uid="uid://dr7mhf477yqb8" path="res://png/test_one_png/Dark sky.png" id="4_3n1w5"]
 [ext_resource type="Script" uid="uid://bv2fd543n66b8" path="res://allstages/test_sta/camera_BIGBROTHER.gd" id="4_tvi7v"]
+[ext_resource type="Script" uid="uid://cs4xm47lsspab" path="res://allstages/test_dialogue_0.gd" id="6_nensc"]
+[ext_resource type="PackedScene" uid="uid://bgbsir7i4anft" path="res://something/dialogue_baloon.tscn" id="7_3n1w5"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yjoq6"]
 panorama = ExtResource("4_3n1w5")
@@ -18,6 +20,12 @@ sky = SubResource("Sky_7q4ac")
 
 [sub_resource type="BoxMesh" id="BoxMesh_frnh5"]
 size = Vector3(1, 1, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tvi7v"]
+size = Vector3(4, 4, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_oi1ql"]
+viewport_path = NodePath("Area3D/SubViewport")
 
 [node name="Main_test_world" type="Node3D"]
 
@@ -39,13 +47,16 @@ texture = ExtResource("2_tvi7v")
 [node name="Bread" parent="." instance=ExtResource("3_nensc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -0.3)
 
+[node name="Camera3D" type="Camera3D" parent="Bread"]
+transform = Transform3D(0.9999625, 0.0022405256, -0.008361754, 0, 0.9659259, 0.25881907, 0.008656725, -0.25880936, 0.9658896, 0, 7, 16.3)
+current = true
+
 [node name="Camera_BB" type="Camera3D" parent="."]
 transform = Transform3D(0.99947083, 0, 0.03252721, 0, 1, 0, -0.03252721, 0, 0.99947083, 0.06446457, 5.6929235, 9.892741)
-current = true
 script = ExtResource("4_tvi7v")
 
-[node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(0.9483308, -0.2642018, 0.17568769, -0.028526481, 0.48048377, 0.8765396, -0.31599838, -0.8362612, 0.4481208, 12.935223, 15.2804785, 1.2188315)
+[node name="Camera3Dtest" type="Camera3D" parent="."]
+transform = Transform3D(0.9483308, -0.2642018, 0.17568769, -0.028526481, 0.48048377, 0.8765396, -0.31599838, -0.8362612, 0.4481208, 4.7682285, 15.2804785, 0.6183553)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.7278805, 0.685704, 0, -0.685704, 0.7278805, 0, 0, 0)
@@ -56,3 +67,20 @@ environment = SubResource("Environment_qqj2n")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 3, -0.3)
 mesh = SubResource("BoxMesh_frnh5")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3, 0)
+script = ExtResource("6_nensc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
+shape = SubResource("BoxShape3D_tvi7v")
+
+[node name="SubViewport" type="SubViewport" parent="Area3D"]
+size = Vector2i(352, 112)
+
+[node name="DialogueBaloon" parent="Area3D/SubViewport" instance=ExtResource("7_3n1w5")]
+
+[node name="Sprite3D" type="Sprite3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0015736, 2.761198, -1)
+texture = SubResource("ViewportTexture_oi1ql")

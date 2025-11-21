@@ -1,13 +1,12 @@
 extends CharacterBody3D
 
 @onready var anim_pl: AnimationPlayer = $AnimationPlayer
+
 @onready var shape_low: ShapeCast3D = $ShapeHolder/ShapeLow
 @onready var shape_high: ShapeCast3D = $ShapeHolder/ShapeHigh
 @onready var shape_feet: ShapeCast3D = $ShapeHolder/ShapeFeet
 @onready var shape_low_fow: ShapeCast3D = $ShapeHolder/ShapeLowFow
 @onready var shape_low_back: ShapeCast3D = $ShapeHolder/ShapeLowBack
-
-
 
 @onready var mark_j_1: Marker3D = $mark_holder/MarkJump1
 @onready var mark_j_2: Marker3D = $mark_holder/MarkJump2
@@ -64,9 +63,10 @@ func _physics_process(delta: float) -> void:
 
 func _input(_event: InputEvent) -> void:
 
-	if Input.is_action_pressed("ui_cancel"):
+	if Input.is_action_pressed("+degug_R_esert"):
 		get_tree().reload_current_scene()
-
+	if Input.is_action_pressed("+debug_exit"):
+		get_tree().quit()
 
 
 func move(direction : String):
@@ -103,6 +103,8 @@ func idle():
 		chan_st(Sts.WALK_R)
 	if Input.is_action_pressed("ui_up") and !Input.is_action_pressed("ui_down"):
 		dir_idle = "back"
+		if shape_low_back.is_colliding() :
+			chan_st(Sts.WALK_B)
 		if Input.is_action_just_pressed("ui_accept"):
 			if shape_low.is_colliding() == true and shape_high.is_colliding() == false:
 				chan_st(Sts.JUMP)
@@ -152,7 +154,7 @@ func walk_f():
 	print("fffffff")
 	if shape_feet.is_colliding() == false:
 		chan_st(Sts.FALL)
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("ui_down") and shape_low_fow.is_colliding():
 		move("foward")
 		if Input.is_action_pressed("ui_up") or !shape_low_fow.is_colliding():
 			dir_idle = "foward"
@@ -167,15 +169,16 @@ func walk_b():
 	print("back")
 	if shape_feet.is_colliding() == false:
 		chan_st(Sts.FALL)
-	if Input.is_action_pressed("ui_right"):
-		move("right")
-		if Input.is_action_pressed("ui_left"):
-			dir_idle = "right_s"
+	if Input.is_action_pressed("ui_up") :
+		if shape_low_back.is_colliding() == true and !shape_low.is_colliding() and !shape_high.is_colliding():
+			move("back")
+		if Input.is_action_pressed("ui_down"):
+			dir_idle = "back"
 			chan_st(Sts.IDLE)
-	elif Input.is_action_pressed("ui_left") and !Input.is_action_pressed("ui_right"):
-		chan_st(Sts.WALK_L)
-	elif Input.is_action_just_released("ui_right") and !Input.is_action_pressed("ui_left"):
-		dir_idle = "right_s"
+	elif Input.is_action_pressed("ui_down") and !Input.is_action_pressed("ui_up"):
+		chan_st(Sts.WALK_F)
+	elif Input.is_action_just_released("ui_up") and !Input.is_action_pressed("ui_down"):
+		dir_idle = "back"
 		chan_st(Sts.IDLE)
 
 

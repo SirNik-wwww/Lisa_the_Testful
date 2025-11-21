@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgbsir7i4anft"]
+
+[ext_resource type="Texture2D" uid="uid://b7cg8tdo8yk2s" path="res://png/test_one_png/Diarrhea_ball un.png" id="1_8piwi"]
+
+[node name="DialogueBaloon" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_8piwi")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Test [b]BALD test [/b]
+[i]Красивый [b]шрифт[/b] на рууском.[/i] Да, нет
+[wave]Бла бла бла"
